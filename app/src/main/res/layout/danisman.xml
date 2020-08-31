@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/parent.contentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView4"
+        style="@style/viewParent.headerText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Danışman Bilgileri"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+        <TextView
+            style="@style/viewParent.Danisman"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="Adı Soyadı " />
+
+        <TextView
+            android:id="@+id/danismanAd"
+            style="@style/viewParent.Danisman"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" />
+
+        <TextView
+            style="@style/viewParent.Danisman"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="Çalıştığı Kurum" />
+
+        <TextView
+            android:id="@+id/danismanKurum"
+            style="@style/viewParent.Danisman"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" />
+
+        <TextView
+            style="@style/viewParent.Danisman"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="Mail Adrasi" />
+
+        <TextView
+            android:id="@+id/danismanMail"
+            style="@style/viewParent.Danisman"
+            android:layout_width="match_parent"
+            android:textColor="@color/loginPrimaryTextColor"
+            android:layout_height="wrap_content"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/textView5"
+            style="@style/viewParent.Danisman"
+            android:textSize="12sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/error"
+            android:drawablePadding="5dp"
+            android:layout_marginTop="80dp"
+            android:text=" Mail adresine tıklayarak danışmanınıza mail\n gönderebilirsiniz." />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

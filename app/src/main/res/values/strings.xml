@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">OBS Trakya</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="login_email_hint">Okul No</string>
+    <string name="login_password_hint">Parola</string>
+    <string name="Profilim">Profilim</string>
+    <string name="email">Email</string>
+    <string name="telefon">Telefon</string>
+    <string name="cep_telefonu">Cep telefonu</string>
+    <string name="adres">Adres</string>
+    <string name="sempt_il_e">Semt/ilçe</string>
+    <string name="posta_kodu">Posta kodu</string>
+    <string name="ehir">Şehir</string>
+    <string name="ifre">Şifre</string>
+    <string name="ifre_tekrar">Şifre tekrar</string>
+    <string name="kaydet">Kaydet</string>
+    <string name="bilgilerimi_d_zenle">Bilgilerimi Düzenle</string>
+</resources>

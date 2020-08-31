@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+       <item android:title="Genel">
+           <menu>
+               <item
+                   android:id="@+id/profil"
+                   android:icon="@drawable/profil_icon"
+                   android:title="Profil" />
+               <item
+                   android:id="@+id/anasayfa"
+                   android:icon="@drawable/anasayfa_icon"
+                   android:title="Anasayfa" />
+               <item
+                   android:id="@+id/geriBildirim"
+                   android:icon="@drawable/feed_back"
+                   android:title="Geri Bildirim" />
+           </menu>
+       </item>
+
+    </group>
+
+    <item android:title="Tema">
+        <menu>
+            <item
+                android:id="@+id/nav_dark_mode"
+                android:icon="@drawable/tema_icon"
+                android:title="Tema Değiştir"/>
+        </menu>
+    </item>
+
+
+    <item
+        android:id="@+id/nav_share"
+        android:icon="@drawable/ic_menu_share"
+        android:title="Share" />
+
+
+    <item
+        android:id="@+id/cikis"
+        android:icon="@drawable/exit"
+        android:title="Çıkış yap" />
+
+
+</menu>

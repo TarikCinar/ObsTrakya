@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FCFCFC</color>
+    <color name="colorPrimaryDark">#2A2E43</color>
+    <color name="colorAccent">#13D3B4</color>
+    <color name="bottomNavigationTextColor">#B2B2B2</color>
+    <color name="bottomNavigationTintColor">#B2B2B2</color>
+    <color name="bottomNavigationSelectedColor">#13D3B4</color>
+    <color name="statusBarColor">#000</color>
+    <color name="whiteBodyColor">#FCFCFC</color>
+    <color name="darkTextColor">#020000</color>
+    <color name="primaryTextColor">#13D3B4</color>
+    <color name="whiteTextColor">#fff</color>
+    <color name="frutorial_title">#4c4c4c</color>
+    <color name="separatorColor">#18102C</color>
+    <!--    home designs main color-->
+    <!--    will use the same color for all card and vectors, if you want to change this color, search the color code in vector files-->
+    <color name="designMainColor">#13D3B4</color>
+    <color name="imageBorderColor">#13D3B4</color>
+    <color name="contentStatusBar">#fff</color>
+    <color name="notColor">#000</color>
+
+    <!--colors for light mode-->
+    <color name="contentBodyColor">#FCFCFC</color>
+    <color name="contentTextColor">#020000</color>
+    <color name="bottomNavigationBackground">#F7F7F7</color>
+    <color name="miniTitle">#0F0101</color>
+    <color name="miniDescription">#707070</color>
+
+
+    <color name="colorPrimaryLogin">#FCFCFC</color>
+    <color name="colorPrimaryDarkLogin">#2A2E43</color>
+    <color name="colorAccentLogin">#13D3B4</color>
+    <color name="loginColorPrimary">#1F5BF3</color>
+    <color name="loginColorPrimaryDark">#0947E8</color>
+    <color name="loginColorAccent">#00A5FF</color>
+    <color name="bottomNavigationTextColorLogin">#B2B2B2</color>
+    <color name="bottomNavigationTintColorLogin">#B2B2B2</color>
+    <color name="bottomNavigationSelectedColorLogin">#13D3B4</color>
+    <color name="statusBarColorLogin">#000</color>
+    <color name="whiteBodyColorLogin">#FCFCFC</color>
+    <color name="darkTextColorLogin">#020000</color>
+    <color name="primaryTextColorLogin">#13D3B4</color>
+    <color name="whiteTextColorLogin">#fff</color>
+    <color name="loginPrimaryTextColor">#00a5ff</color>
+    <color name="frutorial_titleLogin">#4c4c4c</color>
+    <color name="loginBkColor">#f0f0f0</color>
+
+    <!--    home designs main color-->
+    <!--    will use the same color for all card and vectors, if you want to change this color, search the color code in vector files-->
+    <color name="designMainColorLogin">#13D3B4</color>
+    <color name="imageBorderColorLogin">#13D3B4</color>
+    <color name="contentStatusBarLogin">#fff</color>
+    <color name="whiteCardColor">#fff</color>
+
+    <!--colors for light mode-->
+    <color name="contentBodyColorLogin">#FCFCFC</color>
+    <color name="contentTextColorLogin">#020000</color>
+    <color name="bottomNavigationBackgroundLogin">#F7F7F7</color>
+    <color name="miniTitleLogin">#0F0101</color>
+    <color name="miniDescriptionLogin">#707070</color>
+
+
+</resources>

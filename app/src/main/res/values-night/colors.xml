@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--colors for dark mode-->
+    <color name="contentBodyColor">#0F0F10</color>
+    <color name="contentTextColor">#fff</color>
+    <color name="bottomNavigationBackground">#0F0F10</color>
+    <color name="notColor">#fff</color>
+
+    <color name="separatorColor">#18102C</color>
+
+    <color name="miniTitle">#fff</color>
+    <color name="miniDescription">#fff</color>
+    <color name="contentStatusBar">#0F0F10</color>
+
+</resources>

@@ -1,0 +1,145 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryLogin</item>
+        <item name="colorPrimaryDark">@color/statusBarColorLogin</item>
+        <item name="colorAccent">@color/loginColorPrimaryDark</item>
+        <item name="android:textColorHint">@color/loginColorPrimary</item>
+
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="parent">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+
+    <style name="parent.notCard">
+        <item name="cardBackgroundColor">@color/designMainColor</item>
+    </style>
+    <style name="parent.contentLayout">
+        <item name="android:background">@color/contentBodyColor</item>
+        <item name="android:padding">@dimen/normalPadding</item>
+    </style>
+    <style name="parent.profil">
+        <item name="android:padding">@dimen/normalPadding</item>
+        <item name="android:background">@color/contentTextColor</item>
+        <item name="android:textColor">@color/contentBodyColor</item>
+    </style>
+
+    <style name="parent.notlar">
+        <item name="android:textColor">#000</item>
+        <item name="android:fontFamily">@font/muli</item>
+    </style>
+
+    <style name="viewParent.profil">
+        <item name="android:textColor">@color/contentBodyColor</item>
+        <item name="android:textSize">@dimen/headerTextSize</item>
+        <item name="android:textStyle">bold</item>
+        <item name="hintTextColor">@color/contentBodyColor</item>
+        <item name="android:fontFamily">@font/muli</item>
+    </style>
+
+    <style name="viewParent.headerText">
+        <item name="android:textColor">@color/contentTextColor</item>
+        <item name="android:textSize">@dimen/headerTextSize</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/muli</item>
+    </style>
+
+    <style name="viewParent.Danisman">
+        <item name="android:textColor">@color/contentTextColor</item>
+        <item name="android:textSize">@dimen/danisman</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/muli</item>
+    </style>
+
+
+    <!--designs for login and register-->
+    <style name="parentLogin">
+        <item name="colorAccent">@color/designMainColor</item>
+        <item name="android:textColorHint">@color/loginColorPrimaryDark</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/muli</item>
+    </style>
+
+    <style name="parentProfil">
+        <item name="android:textColorHint">@color/designMainColor</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/muli</item>
+    </style>
+
+
+
+    <style name="loginParent" parent="TextAppearance.AppCompat">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/loginBkColor</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="colorAccent">@color/loginColorPrimaryDark</item>
+        <item name="colorControlNormal">@color/loginColorPrimaryDark</item>
+        <item name="colorControlActivated">@color/loginColorPrimaryDark</item>
+    </style>
+
+    <style name="headerText" parent="parent">
+        <item name="android:textSize">@dimen/headerTextSize</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/whiteTextColor</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="loginCard" parent="parent"></style>
+
+    <style name="linearParent" parent="parentLogin">
+        <item name="android:background">@color/whiteBodyColor</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="headerTextPrimary" parent="headerText">
+        <item name="android:textColor">@color/loginPrimaryTextColor</item>
+        <item name="android:fontFamily">@font/muli</item>
+    </style>
+
+    <style name="modifiedEditText" parent="parentLogin">
+        <item name="android:textSize">@dimen/newsMoreTextSize</item>
+        <item name="android:textColor">@color/loginPrimaryTextColor</item>
+        <item name="android:backgroundTint">@color/loginPrimaryTextColor</item>
+        <item name="android:fontFamily">@font/muli</item>
+    </style>
+
+    <style name="viewParent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="loginButton" parent="viewParent">
+        <item name="android:background">@drawable/login_button_bk</item>
+        <item name="android:textColor">@color/whiteTextColor</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="yenileButton" parent="viewParent">
+        <item name="android:background">@drawable/yenile_button</item>
+        <item name="android:textColor">@color/whiteTextColor</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/muli</item>
+
+    </style>
+
+    <style name="AppTheme.family" parent="viewParent">
+        <item name="android:fontFamily">@font/muli</item>
+    </style>
+
+</resources>
