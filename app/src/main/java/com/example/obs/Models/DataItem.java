@@ -164,6 +164,7 @@ public class DataItem{
 	private String harfNotKarsilik;
 
 
+
 	public String getHarfNotKarsilik(){return harfNotKarsilik;}
 
 	public int getEkSinav(){

@@ -51,6 +51,7 @@ dependencies {
     implementation 'com.rom4ek:arcnavigationview:2.0.0'
     implementation 'com.diegodobelo.expandingview:expanding-view:0.9.4'
 
+    implementation "androidx.work:work-runtime:2.4.0"
 
 
 }

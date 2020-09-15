@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.Html;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,6 +70,7 @@ public class DuyuruGosterFragment extends Fragment implements OnBackpressed {
         mContext=container.getContext();
         textViewBaslik=root.findViewById(R.id.textViewBaslik);
         textViewIcerik=root.findViewById(R.id.textViewIcerik);
+
         imageView=root.findViewById(R.id.image);
         PhotoViewAttacher pAttacher;
         pAttacher = new PhotoViewAttacher(imageView);

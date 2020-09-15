@@ -101,7 +101,7 @@
                     android:hint="@string/login_email_hint"
                     android:inputType="number"
                     android:maxLines="1"
-                    android:textColor="@color/loginColorPrimaryDark"
+                    android:textColor="@color/loginPrimaryTextColor"
                     android:textSize="18sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -110,6 +110,7 @@
                 style="@style/parentLogin"
                 android:layout_marginTop="@dimen/loginViewsMargin"
                 android:scrollbarSize="8dp"
+                app:endIconTint="@color/loginPrimaryTextColor"
                 app:endIconMode="password_toggle">
 
                 <EditText
@@ -118,7 +119,7 @@
                     android:hint="@string/login_password_hint"
                     android:inputType="textPassword"
                     android:maxLines="1"
-                    android:textColor="@color/loginColorPrimaryDark"
+                    android:textColor="@color/loginPrimaryTextColor"
                     android:textSize="18sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -129,8 +130,8 @@
                 android:layout_width="match_parent"
                 android:fontFamily="@font/muli"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/loginColorPrimaryDark"
-                android:textColor="@color/loginColorPrimaryDark"
+                android:buttonTint="@color/loginPrimaryTextColor"
+                android:textColor="@color/loginPrimaryTextColor"
                 android:layout_marginTop="15dp"
                 android:text="Otomatik giriş yap" />
 

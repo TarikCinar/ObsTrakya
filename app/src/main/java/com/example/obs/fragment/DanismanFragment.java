@@ -3,6 +3,7 @@ package com.example.obs.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,14 +43,12 @@ public class DanismanFragment extends Fragment implements OnBackpressed {
         danismanMail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent email = new Intent(Intent.ACTION_SEND);
-                email.putExtra(Intent.EXTRA_EMAIL, new String[]{ sp.getString("danismanMail","")});
-                email.putExtra(Intent.EXTRA_SUBJECT, "");
-                email.putExtra(Intent.EXTRA_TEXT, "");
 
-                email.setType("message/rfc822");
+                Intent intent = new Intent(Intent.ACTION_SENDTO);
+                intent.setData(Uri.parse("mailto:"));
+                intent.putExtra(Intent.EXTRA_EMAIL  , new String[] {sp.getString("danismanMail","") });
 
-                startActivity(Intent.createChooser(email, "Danışman mail"));
+                startActivity(Intent.createChooser(intent, "Mail uygulamasını seçin"));
             }
         });
 

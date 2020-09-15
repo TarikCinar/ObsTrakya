@@ -70,7 +70,7 @@
     <!--designs for login and register-->
     <style name="parentLogin">
         <item name="colorAccent">@color/designMainColor</item>
-        <item name="android:textColorHint">@color/loginColorPrimaryDark</item>
+        <item name="android:textColorHint">@color/loginPrimaryTextColor</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">@font/muli</item>

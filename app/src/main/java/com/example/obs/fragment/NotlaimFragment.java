@@ -105,7 +105,6 @@ public class NotlaimFragment extends Fragment implements OnBackpressed {
                 String veri=doc.body().html()
                         .replaceAll("null","\"-\"")
                         .replaceAll("\n<br>","\t");
-                System.out.println(veri);
                 Gson gson=new Gson();
                 Notlarim data=gson.fromJson(veri, Notlarim.class);
                 List<DataItem> dataItem=data.getData();
@@ -123,6 +122,7 @@ public class NotlaimFragment extends Fragment implements OnBackpressed {
                 List<String> vize10=new ArrayList<>();
                 List<String> _final=new ArrayList<>();
                 List<String> harf=new ArrayList<>();
+                List<String> butunleme=new ArrayList<>();
 
 
                 for(DataItem d:dataItem){
@@ -135,7 +135,6 @@ public class NotlaimFragment extends Fragment implements OnBackpressed {
                     }
                     if (kontrol){
                         dersler.add(d.getDersAdi());
-                        System.out.println(d.getVize2Adi());
                         vize1.add(d.getVize1Adi());
                         vize2.add(d.getVize2Adi());
                         vize3.add(d.getVize3Adi());
@@ -148,6 +147,8 @@ public class NotlaimFragment extends Fragment implements OnBackpressed {
                         vize10.add(d.getVize10Adi());
                         _final.add(String.valueOf(d.getFinalAdi()));
                         harf.add("Harf Notu\t "+d.getHarfNotKarsilik());
+                        butunleme.add("Bütünleme\t "+d.getButunlemeAdi().toString());
+
 
                     }
                 }
@@ -165,6 +166,7 @@ public class NotlaimFragment extends Fragment implements OnBackpressed {
                     tutucu.add(vize10.get(i));
                     tutucu.add(_final.get(i));
                     tutucu.add(harf.get(i));
+                    tutucu.add(butunleme.get(i));
                     notlar.put(dersler.get(i),tutucu);
                 }
 

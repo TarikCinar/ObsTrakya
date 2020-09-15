@@ -43,6 +43,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
+import java.io.Console;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -245,8 +247,20 @@ public class GirisActivity extends AppCompatActivity {
                         new DuyurularDao().duyuruEkle(sq,baslik.text(),link.attr("abs:href"));
                     }
 
+                    SharedPreferences sharedPreferences=getSharedPreferences("duyurular",MODE_PRIVATE);
+                    SharedPreferences.Editor editor=sharedPreferences.edit();
+                    editor.putString("duyurular",elements.html());
+                    editor.apply();
+
                     Document haberler = Jsoup.connect("https://www.trakya.edu.tr/news_cats/haberler").get();
                     Elements haber=haberler.getElementsByClass("col-sm-6 col-md-4");
+                    Elements habericerik=haberler.getElementsByClass("entry-title text-white text-uppercase font-weight-600 m-0 mt-5 overflow-hidden");
+
+
+                    SharedPreferences sp=getSharedPreferences("haberler",MODE_PRIVATE);
+                    SharedPreferences.Editor spedit=sp.edit();
+                    spedit.putString("haberler",habericerik.text());
+                    spedit.apply();
 
                     for (Element h:haber){
                         Elements link = h.select("a[href]");
@@ -291,6 +305,7 @@ public class GirisActivity extends AppCompatActivity {
                         .ignoreContentType(true)
                         .header("Authorization", "Basic " + base64login)
                         .execute();
+
                 Document doc = Jsoup.connect("https://obs.trakya.edu.tr/api/ogrenci")
                         .cookies(document.cookies())
                         .ignoreContentType(true)
@@ -301,6 +316,18 @@ public class GirisActivity extends AppCompatActivity {
                         .ignoreContentType(true)
                         .get();
 
+                Document ders = Jsoup.connect("https://obs.trakya.edu.tr/api/ogrenciders")
+                        .cookies(document.cookies())
+                        .ignoreContentType(true)
+                        .get();
+
+                String veri=ders.body().html();
+
+
+                SharedPreferences sharedPreferencesDers=getSharedPreferences("ders",MODE_PRIVATE);
+                SharedPreferences.Editor seditor=sharedPreferencesDers.edit();
+                seditor.putString("ders",veri);
+                seditor.apply();
 
                 Elements elements=yemek.getElementsByClass("alert alert-success xs-text-center");
                 String yemekList = "";

@@ -7,7 +7,9 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Base64;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -16,14 +18,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.work.Constraints;
+import androidx.work.Data;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.NetworkType;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkInfo;
+import androidx.work.WorkManager;
+import androidx.work.WorkRequest;
 
-import com.example.obs.BottomNavigationBehavior;
 import com.example.obs.BuildConfig;
 import com.example.obs.DarkModePrefManager;
 import com.example.obs.R;
@@ -39,6 +47,7 @@ import com.example.obs.fragment.TranskriptFragment;
 import com.example.obs.sqlite.Bilgiler;
 import com.example.obs.sqlite.BilgilerDao;
 import com.example.obs.sqlite.BilgilerYardimci;
+import com.example.obs.workmanager.MyWorker;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.OkHttp3Downloader;
@@ -47,6 +56,8 @@ import com.squareup.picasso.Picasso;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.Interceptor;
@@ -66,6 +77,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private CircleImageView profil;
     private TextView isim,mail;
     private BilgilerYardimci yardimci;
+    private BilgilerYardimci bilgilerYardimci;
 
 
 
@@ -116,6 +128,38 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return false;
         }
     };
+    private void createWorkRequest() {
+        Constraints constraints=new Constraints.Builder()
+                .setRequiredNetworkType(NetworkType.CONNECTED)
+                .build();
+        final PeriodicWorkRequest periodicWorkRequest
+                = new PeriodicWorkRequest.Builder(MyWorker.class,1, TimeUnit.MINUTES)
+                .setConstraints(constraints)
+                .build();
+        WorkManager.getInstance(this)
+                .enqueueUniquePeriodicWork("sendLocation", ExistingPeriodicWorkPolicy.REPLACE, periodicWorkRequest);
+        WorkManager.getInstance(MainActivity.this).enqueue(periodicWorkRequest);
+
+    }
+
+    private WorkInfo.State getStateOfWork() {
+        try {
+            if (WorkManager.getInstance(this).getWorkInfosForUniqueWork("sendLocation").get().size() > 0) {
+                return WorkManager.getInstance(this).getWorkInfosForUniqueWork("sendLocation")
+                        .get().get(0).getState();
+                // this can return WorkInfo.State.ENQUEUED or WorkInfo.State.RUNNING
+                // you can check all of them in WorkInfo class.
+            } else {
+                return WorkInfo.State.CANCELLED;
+            }
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+            return WorkInfo.State.CANCELLED;
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return WorkInfo.State.CANCELLED;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,25 +167,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setDarkMode(getWindow());
         setContentView(R.layout.activity_main);
 
+        bilgilerYardimci=new BilgilerYardimci(this);
+
+        SharedPreferences sp=getSharedPreferences("bilgiler",Context.MODE_PRIVATE);
+        final ArrayList<Bilgiler> bilgilers=new BilgilerDao().bilgiAl(bilgilerYardimci,sp.getString("username",""));
+        String giris ="";
+        for (Bilgiler bil:bilgilers){
+            giris=bil.getGiris();
+        }
+
+        if (giris.equals("true") && getStateOfWork() != WorkInfo.State.ENQUEUED && getStateOfWork() != WorkInfo.State.RUNNING){
+
+            Log.e("main activity","doğru");
+            createWorkRequest();
+        }
 
 
 
-        SharedPreferences sharedPreferences=getSharedPreferences("bilgiler", MODE_PRIVATE);
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         profil=navigationView.getHeaderView(0).findViewById(R.id.profil);
         isim=navigationView.getHeaderView(0).findViewById(R.id.isim);
         mail=navigationView.getHeaderView(0).findViewById(R.id.mail);
-        isim.setText(sharedPreferences.getString("isimSoyisim",""));
-        mail.setText(sharedPreferences.getString("mail",""));
+        isim.setText(sp.getString("isimSoyisim",""));
+        mail.setText(sp.getString("mail",""));
         profil.setImageResource(R.drawable.danisman);
 
         yardimci=new BilgilerYardimci(this);
 
-        SharedPreferences sp=getSharedPreferences("bilgiler", Context.MODE_PRIVATE);
-        ArrayList<Bilgiler> bilgilers=new BilgilerDao().bilgiAl(yardimci,sp.getString("username",""));
 
         String resim ="";
         for (Bilgiler bil:bilgilers){
@@ -257,6 +311,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             SharedPreferences sp=getSharedPreferences("bilgiler",Context.MODE_PRIVATE);
             String rawQuery=String.format("UPDATE bilgiler SET giris='%s' WHERE okulNo='%s'","false",sp.getString("username",""));
             new BilgilerDao().update(yardimci,rawQuery);
+            WorkManager.getInstance(MainActivity.this).cancelAllWork();
             startActivity(new Intent(this,GirisActivity.class));
         }
 
